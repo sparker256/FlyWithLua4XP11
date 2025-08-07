@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{matrix.os}}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: "Windows: Configure environment"
       if: runner.os == 'Windows'
@@ -52,7 +52,7 @@ jobs:
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
       
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: binaries
         path: ${{github.workspace}}/build/*.xpl
@@ -63,14 +63,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: binaries
           path: FlyWithLua/64
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: FlyWithLua_plugin
           path: |
@@ -83,7 +83,7 @@ jobs:
 
       - name: Upload binaries to release
         if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@v4
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: FlyWithLua_NG_Lin_Mac_Win.zip
