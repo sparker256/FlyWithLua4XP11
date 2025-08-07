@@ -157,7 +157,7 @@
  *                    Thanks osprey-12
  *  v2.7.37 [added]   Added support for the horizontal scrollbar in Imgui windows.
  *  v2.7.38 [added]   Removed X-Plane LuaJIT alloc.
- *  v2.2.39 [Added]   do_every_frame_after() callback to run in FlightLoop Phase 1 (after physics processing, thus eliminating 
+ *  v2.7.39 [Added]   do_every_frame_after() callback to run in FlightLoop Phase 1 (after physics processing, thus eliminating
  *	                  graphic jitter
  *          [Added]   do_every_frame_before() callback to run in FlightLoop Phase 1 (before physics processing)
  *
