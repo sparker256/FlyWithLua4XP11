@@ -1,6 +1,6 @@
 # FlyWithLua for X-Plane 11
 
-[![CMake](https://github.com/X-Friese/FlyWithLua/actions/workflows/cmake.yml/badge.svg)](https://github.com/X-Friese/FlyWithLua/actions/workflows/cmake.yml)
+[![CMake](https://github.com/sparker256/FlyWithLua4XP11/actions/workflows/cmake.yml/badge.svg)](https://github.com/sparker256/FlyWithLua4XP11/actions/workflows/cmake.yml)
 
 This is the official source code repository for the FlyWithLua plugin project.
 
