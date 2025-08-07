@@ -2,7 +2,10 @@
 //  FlyWithLua Plugin for X-Plane 11
 // ----------------------------------
 
-#define PLUGIN_VERSION "2.7.35 build " __DATE__ " " __TIME__
+#define PLUGIN_VERSION_NO "2.7.38"
+#define PLUGIN_VERSION_BUILD __DATE__ " " __TIME__
+#define PLUGIN_VERSION PLUGIN_VERSION_NO " build " PLUGIN_VERSION_BUILD
+
 #define PLUGIN_NAME "FlyWithLua NG"
 #define PLUGIN_DESCRIPTION "Next Generation Version " PLUGIN_VERSION
 
@@ -149,6 +152,11 @@
  *          [added]   set(xplmType_data) , perf enhancements ( else if )
  *          [changed] Improved string dataref support.
  *          [updated] SaveInitialAssignments to match XP 11.55r2
+ *  v2.7.36 [changed] Fixed issue with float_wnd_set_position not puting window in correct position.
+ *          [added]   Add Global PLUGIN_VERSION predefined variables PLUGIN_VERSION, PLUGIN_VERSION_NO, PLUGIN_VERSION_BUILD
+ *                    Thanks osprey-12
+ *  v2.7.37 [added]   Added support for the horizontal scrollbar in Imgui windows.
+ *  v2.7.38 [added]   Removed X-Plane LuaJIT alloc.
  *
  *  Markus (Teddii):
  *  v2.1.20 [changed] bug fixed in Luahid_open() and Luahid_open_path(), setting last HID device index back if no device was found
@@ -6487,6 +6495,7 @@ void ResetLuaEngine()
     }
     OpenALSounds.clear();
 
+/*
     XPLMDataRef lua_alloc_ref = XPLMFindDataRef("sim/operation/prefs/misc/has_lua_alloc");
     if (lua_alloc_ref && XPLMGetDatai(lua_alloc_ref))
     {
@@ -6501,7 +6510,7 @@ void ResetLuaEngine()
     lua_alloc_ref = XPLMFindDataRef("sim/operation/prefs/misc/has_lua_alloc");
     if (lua_alloc_ref && XPLMGetDatai(lua_alloc_ref))
     {
-        /* X-Plane has an allocator for us - we _must_ use it. */
+        // X-Plane has an allocator for us - we _must_ use it.
         ud = lj_alloc_create();
         if (ud == nullptr)
         {
@@ -6510,9 +6519,11 @@ void ResetLuaEngine()
         FWLLua = lua_newstate(lj_alloc_f, ud);
     } else
     {
-        /* use the default allocator. */
+        // use the default allocator.
         FWLLua = luaL_newstate();
     }
+*/
+    FWLLua = luaL_newstate();
     sol::set_default_state(FWLLua);
 
     LuaDrawCommand.clear();
@@ -6653,6 +6664,12 @@ void ResetLuaEngine()
     lua_setglobal(FWLLua, "SDK_VERSION");
     lua_pushnumber(FWLLua, HostID);
     lua_setglobal(FWLLua, "XPLANE_HOSTID");
+    lua_pushstring(FWLLua, PLUGIN_VERSION);
+    lua_setglobal(FWLLua, "PLUGIN_VERSION");
+    lua_pushstring(FWLLua, PLUGIN_VERSION_NO);
+    lua_setglobal(FWLLua, "PLUGIN_VERSION_NO");
+    lua_pushstring(FWLLua, PLUGIN_VERSION_BUILD);
+    lua_setglobal(FWLLua, "PLUGIN_VERSION_BUILD");
     char dirSep[2];
     strcpy(dirSep, XPLMGetDirectorySeparator()); // correct for each OS
     lua_pushstring(FWLLua, dirSep);
@@ -7231,6 +7248,9 @@ PLUGIN_API void XPluginDisable(void)
 
     // close Lua
     LuaIsRunning = false;
+    lua_close(FWLLua);
+
+/*
     XPLMDataRef lua_alloc_ref = XPLMFindDataRef("sim/operation/prefs/misc/has_lua_alloc");
     if (lua_alloc_ref && XPLMGetDatai(lua_alloc_ref))
     {
@@ -7241,7 +7261,7 @@ PLUGIN_API void XPluginDisable(void)
     {
         lua_close(FWLLua);
     }
-
+*/
 
     // killing all commands
     if (CommandTableLastElement > -1)
@@ -7406,10 +7426,14 @@ PLUGIN_API int XPluginEnable(void)
     XPLMRegisterFlightLoopCallback(init_sound, -1.0f, nullptr);
 
     // Starting the Lua engine
+    /* use the default allocator. */
+    FWLLua = luaL_newstate();
+
+/*
     XPLMDataRef lua_alloc_ref = XPLMFindDataRef("sim/operation/prefs/misc/has_lua_alloc");
     if (lua_alloc_ref && XPLMGetDatai(lua_alloc_ref))
     {
-        /* X-Plane has an allocator for us - we _must_ use it. */
+        // X-Plane has an allocator for us - we _must_ use it.
         ud = lj_alloc_create();
         if (ud == nullptr)
         {
@@ -7421,9 +7445,11 @@ PLUGIN_API int XPluginEnable(void)
         FWLLua = lua_newstate(lj_alloc_f, ud);
     } else
     {
-        /* use the default allocator. */
+        // use the default allocator.
         FWLLua = luaL_newstate();
     }
+
+*/
     sol::set_default_state(FWLLua);
 
     luaL_openlibs(FWLLua);

@@ -69,3 +69,9 @@ v2.7.33 Added support for LuaJIT 2.1.0 beta3. Updated to sol v3.2.1. Updated Ope
 v2.7.34 Added support for Imgui 1.85. Updated sol2 to version 3.2.2.
 
 v2.7.35 Thanks to melbo Improved string dataref support. Fix for Datab datarefs. Updated SaveInitialAssignments to match XP 11.55r2
+
+v2.7.36 Fixed issue with float_wnd_set_position not puting window in correct position. Add Global PLUGIN_VERSION predefined variables PLUGIN_VERSION, PLUGIN_VERSION_NO, PLUGIN_VERSION_BUILD Thanks osprey-12
+
+v2.7.37 Added support for the horizontal scrollbar in Imgui windows.
+
+v2.7.38 Removed X-Plane LuaJIT alloc.

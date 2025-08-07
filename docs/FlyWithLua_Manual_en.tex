@@ -19,8 +19,7 @@
 \usepackage{helvet}
 \usepackage{listings}
 \lstset{numbers=left, numberstyle=\tiny, numbersep=4pt, breaklines=true, frame=single, showstringspaces=false, basicstyle=\scriptsize}
-\include{lua.def}
-\lstset{language=lua}
+
 \usepackage[pdftitle={FlyWithLua Quick Reference Manual},pdfstartview={FitH},colorlinks=true]{hyperref}
 \pdfcompresslevel=9
 \pdfimageresolution=72
@@ -54,8 +53,11 @@
 \setlength{\headheight}{2cm}
 \chead{\includegraphics[width=2.0cm]{FlyWithLua_logo.jpg}\\[2ex]}
 \cfoot{\footnotesize Page \thepage\ of \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.9pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %% Ende des Vorspanns %%
@@ -295,6 +297,21 @@ add_macro("Automatically set Transponder", "transponder_help = true", "transpond
 
 All predefined variables are readonly. If you change them, X-Plane will not recognize it.
 
+\subsubsection{PLUGIN\_VERSION}
+
+Plugin version name.
+
+
+\subsubsection{PLUGIN\_VERSION\_NO}
+
+Plugin version number.
+
+
+\subsubsection{PLUGIN\_VERSION\_BULD}
+
+Plugin version build date \& time.
+
+
 \subsubsection{LONGITUDE}
 
 Gives the actual longitude value in decimal as a double float value (remember Lua didn't know float but only number). As X-Plane uses the data type \verb|double|, but the numbers in Lua are only \verb|float|, you will get an approximation.
@@ -381,21 +398,7 @@ Since FlyWithLua version 2.0 all menu entries are no longer forced to English. T
 \begin{lstlisting}
 dataref("COM1", "sim/cockpit/radios/com1_freq_hz", "writable")
 
-if XPLANE_LANGUAGE == "German" then
-   add_macro("Stelle das Funkgerät auf UNICOM", "COM1 = 12280")
 
-elseif XPLANE_LANGUAGE == "French" then
-   add_macro("Fréquence radio point sur l'UNICOM", "COM1 = 12280")
-
-elseif XPLANE_LANGUAGE == "Spanish" then
-   add_macro("Punto de frecuencia de radio en la UNICOM", "COM1 = 12280")
-
-elseif XPLANE_LANGUAGE == "Italian" then
-   add_macro("Punto di frequenza radio sulla UNICOM", "COM1 = 12280")
-
-else
-   add_macro("Set radio to UNICOM", "COM1 = 12280")
-end
 \end{lstlisting}
 
 \subsubsection{DIRECTORY\_SEPARATOR}
