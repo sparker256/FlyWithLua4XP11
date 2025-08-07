@@ -2,7 +2,7 @@
 
 [![CMake](https://github.com/sparker256/FlyWithLua4XP11/actions/workflows/cmake.yml/badge.svg)](https://github.com/sparker256/FlyWithLua4XP11/actions/workflows/cmake.yml)
 
-This is the official source code repository for the FlyWithLua plugin project.
+This is the source code repository for the FlyWithLua4XP11 plugin project.
 
 FlyWithLua offers Lua scripting to X-Plane since X-Plane 9.
 
@@ -46,7 +46,7 @@ If you want to grab a most nightly binary, just download `FlyWithLua_plugin.zip`
 2.  Checkout and configure the project:
 
     ```
-    git clone https://github.com/X-Friese/FlyWithLua.git
+    git clone https://github.com/sparker256/FlyWithLua4XP11.git
     cd FlyWithLua
     cmake -G "MinGW Makefiles" -S .\src -B .\build -DCMAKE_BUILD_TYPE=RelWithDebInfo
     ```
@@ -70,7 +70,7 @@ If you want to grab a most nightly binary, just download `FlyWithLua_plugin.zip`
 2. Checkout and configure the project:
 
    ```
-   git clone https://github.com/X-Friese/FlyWithLua.git
+   git clone https://github.com/sparker256/FlyWithLua4XP11.git
    cd FlyWithLua
    cmake -S ./src -B ./build -DCMAKE_BUILD_TYPE=RelWithDebInfo
    ```
@@ -90,7 +90,7 @@ If you want to grab a most nightly binary, just download `FlyWithLua_plugin.zip`
 2. Checkout and configure the project:
 
    ```
-   git clone https://github.com/X-Friese/FlyWithLua.git
+   git clone https://github.com/sparker256/FlyWithLua4XP11.git
    cd FlyWithLua
    cmake -S ./src -B ./build -DCMAKE_BUILD_TYPE=RelWithDebInfo
    ```
@@ -143,7 +143,7 @@ export PATH="$PATH:/usr/osxcross/bin"
 Build FlyWithLua:
 
 ```
-git clone https://github.com/X-Friese/FlyWithLua.git
+git clone https://github.com/sparker256/FlyWithLua4XP11.git
 cd FlyWithLua
 
 # For Windows:
@@ -164,7 +164,7 @@ cmake --build ./build-mac
 - Create a CodeBlocks Projects folder like this.
 - `mkdir CodeBlocksProjects`
 - `cd D:\CodeBlocksProjects`
-- `git clone https://github.com/X-Friese/FlyWithLua.git`
+- `git clone https://github.com/sparker256/FlyWithLua4XP11.git`
 - `cd FlyWithLua/src`
 - `mkdir build`
 - `cd build`
