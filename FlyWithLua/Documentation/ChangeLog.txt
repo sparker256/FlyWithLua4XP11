@@ -75,3 +75,5 @@ v2.7.36 Fixed issue with float_wnd_set_position not puting window in correct pos
 v2.7.37 Added support for the horizontal scrollbar in Imgui windows.
 
 v2.7.38 Removed X-Plane LuaJIT alloc.
+
+v2.7.39 Added support fordo_every_frame_after() callback to run in FlightLoop Phase 1 (after physics processing, thus eliminating graphic jitter) and do_every_frame_before() callback to run in FlightLoop Phase 1 (before physics processing) thanks to smoothchat.
