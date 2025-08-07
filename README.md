@@ -12,7 +12,6 @@ You will find a binary version ready to use in X-Plane 9 or 10 in the [download 
 
 The new versions are X-Plane 11 only and the binary is also in the [download area of x-plane.org](https://forums.x-plane.org/index.php?/files/file/38445-flywithlua-ng-next-generation-edition-for-x-plane-11-win-lin-mac/).
 
-If you want to grab a most nightly binary, just download `FlyWithLua_plugin.zip` from the most recent [GitHub Actions build](https://github.com/sparker256/FlyWithLua4XP11/actions/workflows/cmake.yml?query=branch%3Amaster) and unpack it into your X-Plane's plugin folder.
 
 > Copyright (c) 2012 Carsten Lynker
 >
